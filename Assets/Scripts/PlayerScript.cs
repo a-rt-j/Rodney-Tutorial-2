@@ -11,13 +11,13 @@ public class PlayerScript : MonoBehaviour
 
     public Text score;
 
-   
+   private int scoreValue = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         rd2d = GetComponent<Rigidbody2D>();
-        
+        score.text = scoreValue.ToString();
     }
 
     // Update is called once per frame
@@ -32,8 +32,8 @@ public class PlayerScript : MonoBehaviour
     {
        if (collision.collider.tag == "Coin")
         {
-            
-            
+            scoreValue += 1;
+            score.text = scoreValue.ToString();
             Destroy(collision.collider.gameObject);
         }
 
