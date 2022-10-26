@@ -6,20 +6,37 @@ using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
     private Rigidbody2D rd2d;
-
     public float speed;
-
     public Text score;
+    public GameObject winTextObject;
 
-   private int scoreValue = 0;
+    private int scoreValue = 0;
+    private int lives;
+    public Text livesText;
+  
 
     // Start is called before the first frame update
     void Start()
     {
         rd2d = GetComponent<Rigidbody2D>();
         score.text = scoreValue.ToString();
+        SetScoreText();
+        winTextObject.SetActive(false);
+
+        lives = 3;
+       
+        
     }
 
+    void SetScoreText()
+    {
+        if (scoreValue == 4)
+        {
+            winTextObject.SetActive(true);
+        }
+    }
+
+   
     // Update is called once per frame
     void FixedUpdate()
     {
